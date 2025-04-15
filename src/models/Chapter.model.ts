@@ -1,12 +1,21 @@
-import { Table, Model, Column, DataType, ForeignKey, BelongsTo, HasMany } from "sequelize-typescript";
+import {
+  Table,
+  Model,
+  Column,
+  DataType,
+  ForeignKey,
+  BelongsTo,
+  HasMany,
+} from "sequelize-typescript";
 import Novel from "./Novel.model";
 import Comment from "./Comment.model";
 
 @Table({ tableName: "chapter" })
-class Chapter extends Model <Chapter>{
+class Chapter extends Model<Chapter> {
+  
   @Column({
     type: DataType.STRING(100),
-    allowNull: false
+    allowNull: false,
   })
   declare title: string;
 
@@ -15,14 +24,14 @@ class Chapter extends Model <Chapter>{
 
   @Column({
     type: DataType.INTEGER,
-    allowNull: false
+    allowNull: false,
   })
   declare chapterNumber: number;
 
   @ForeignKey(() => Novel)
   @Column({
     type: DataType.INTEGER,
-    allowNull: false
+    allowNull: false,
   })
   declare novelId: number;
 

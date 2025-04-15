@@ -18,6 +18,7 @@ import {
 
 @Table({ tableName: "user" })
 class User extends Model<IUserAttributes, IUserCreationAttributes> {
+  
   @Column({
     type: DataType.STRING(70),
     allowNull: false,

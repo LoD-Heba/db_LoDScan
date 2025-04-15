@@ -11,8 +11,6 @@ class Role extends Model <Role>{
   })
   declare name: string; // Ej: 'Admin', 'Translator', 'User'
 
-  @HasMany(() => User)
-  declare users: User[];
 }
 
 export default Role;
