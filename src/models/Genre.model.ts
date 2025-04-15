@@ -1,34 +1,17 @@
-// src/models/Genre.model.ts
-import { Table, Model, Column, DataType, HasMany } from 'sequelize-typescript';
-import NovelGenre from './NovelGenre.model';
+import { Table, Model, Column, DataType, HasMany } from "sequelize-typescript";
+import NovelGenre from "./NovelGenre.model";
 
-@Table({
-  tableName: 'genres',
-  timestamps: false
-})
-class Genre extends Model {
-  // ID único del género
-  @Column({
-    type: DataType.INTEGER,
-    primaryKey: true,
-    autoIncrement: true
-  })
-  declare id: number;
-
-  // Nombre del género (debe ser único)
+@Table({ tableName: "genre" })
+class Genre extends Model <Genre>{
   @Column({
     type: DataType.STRING(50),
     allowNull: false,
-    unique: true,
-    validate: {
-      notEmpty: true
-    }
+    unique: true
   })
-  declare name: string;
+  declare name: string; // Ej: 'Fantasy', 'Romance', 'Isekai'
 
-  // Relación muchos-a-muchos con Novelas (a través de NovelGenre)
   @HasMany(() => NovelGenre)
-  declare novel_genres: NovelGenre[];
+  declare novelGenres: NovelGenre[];
 }
 
 export default Genre;

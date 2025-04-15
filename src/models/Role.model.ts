@@ -1,40 +1,16 @@
-// src/models/Role.model.ts
-import { Table, Model, Column, DataType, HasMany } from 'sequelize-typescript';
-import User from './User.model';
+import { Table, Model, Column, DataType, HasMany, Unique } from "sequelize-typescript";
+import User from "./User.model";
 
-@Table({
-  tableName: 'roles',
-  timestamps: false // No necesitamos timestamps aquí
-})
-class Role extends Model {
-  // ID único del rol
+@Table({ tableName: "role" })
+class Role extends Model <Role>{
+  @Unique
   @Column({
-    type: DataType.INTEGER,
-    primaryKey: true,
-    autoIncrement: true
-  })
-  declare id: number;
-
-  // Nombre del rol (debe ser único)
-  @Column({
-    type: DataType.STRING(20),
+    type: DataType.STRING(50),
     allowNull: false,
-    unique: true,
-    validate: {
-      notEmpty: true,
-      isIn: [['admin', 'moderador', 'nuevo', 'autor_principiante', 'autor_promedio', 'autor_profesional']]
-    }
+    unique: true
   })
-  declare name: string;
+  declare name: string; // Ej: 'Admin', 'Translator', 'User'
 
-  // Descripción del rol y sus permisos
-  @Column({
-    type: DataType.STRING(200),
-    allowNull: true
-  })
-  declare description: string;
-
-  // Usuarios que tienen este rol
   @HasMany(() => User)
   declare users: User[];
 }

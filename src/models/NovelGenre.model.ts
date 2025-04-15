@@ -1,32 +1,22 @@
-// src/models/NovelGenre.model.ts
-import { Table, Model, Column, DataType, ForeignKey, BelongsTo } from 'sequelize-typescript';
-import Novel from './Novel.model';
-import Genre from './Genre.model';
+import { Table, Model, Column, DataType, ForeignKey } from "sequelize-typescript";
+import Novel from "./Novel.model";
+import Genre from "./Genre.model";
 
-@Table({
-  tableName: 'novel_genres',
-  timestamps: false
-})
-class NovelGenre extends Model {
+@Table({ tableName: "novel_genre" })
+class NovelGenre extends Model <NovelGenre> {
   @ForeignKey(() => Novel)
   @Column({
     type: DataType.INTEGER,
-    primaryKey: true
+    allowNull: false
   })
-  declare novel_id: number;
-
-  @BelongsTo(() => Novel)
-  declare novel: Novel;
+  declare novelId: number;
 
   @ForeignKey(() => Genre)
   @Column({
     type: DataType.INTEGER,
-    primaryKey: true
+    allowNull: false
   })
-  declare genre_id: number;
-
-  @BelongsTo(() => Genre)
-  declare genre: Genre;
+  declare genreId: number;
 }
 
 export default NovelGenre;

@@ -1,20 +1,13 @@
 import { Router } from "express";
-import { request,response } from "express";
+import roleRouter from "./role.routes";
+import userRouter from "./user.routes";
+import authRouter from "../auth/auth.routes";
 
 const router = Router();
-//Rutas
-router.get("/", (req, res) => {
-    res.send("Hello, world-GET!");
-});
-router.post("/", (req, res) => {
-    res.send("Hello, world-POST!");
-});
-router.put("/", (req, res) => {
-    res.send("Hello, world-PUT!");
-});
-router.delete("/", (req, res) => {
-    res.send("Hello, world-DELETE!");
-});
 
+// Rutas
+router.use("/roles", roleRouter);
+router.use("/users", userRouter);
+router.use("/auth", authRouter);
 
 export default router;
