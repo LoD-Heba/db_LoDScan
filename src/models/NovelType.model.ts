@@ -1,8 +1,10 @@
 import { Table, Model, Column, DataType, HasMany } from "sequelize-typescript";
 import Novel from "./Novel.model";
+import { INovelTypeAttributes } from "../interfaces/novelType.interface";
+
 
 @Table({ tableName: "novel_type" })
-class NovelType extends Model <NovelType> {
+class NovelType extends Model <INovelTypeAttributes> {
   @Column({
     type: DataType.STRING(50),
     allowNull: false,

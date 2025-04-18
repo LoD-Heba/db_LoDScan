@@ -1,14 +1,25 @@
-import { Table, Model, Column, DataType, ForeignKey, BelongsTo, HasMany } from "sequelize-typescript";
+import {
+  Table,
+  Model,
+  Column,
+  DataType,
+  ForeignKey,
+  BelongsTo,
+  HasMany,  
+} from "sequelize-typescript";
+import { INovelAttributes, INovelCreationAttributes } from "../interfaces/novel.interface";
 import User from "./User.model";
 import NovelType from "./NovelType.model";
 import NovelGenre from "./NovelGenre.model";
 import Chapter from "./Chapter.model";
+import Rating from "./Rating.model";
 
 @Table({ tableName: "novel" })
-class Novel extends Model <Novel>{
+class Novel extends Model<INovelAttributes, INovelCreationAttributes>
+ {
   @Column({
     type: DataType.STRING(100),
-    allowNull: false
+    allowNull: false,
   })
   declare title: string;
 
@@ -21,14 +32,14 @@ class Novel extends Model <Novel>{
   @ForeignKey(() => User)
   @Column({
     type: DataType.INTEGER,
-    allowNull: false
+    allowNull: false,
   })
   declare authorId: number;
 
   @ForeignKey(() => NovelType)
   @Column({
     type: DataType.INTEGER,
-    allowNull: false
+    allowNull: false,
   })
   declare typeId: number;
 
@@ -43,6 +54,9 @@ class Novel extends Model <Novel>{
 
   @HasMany(() => Chapter)
   declare chapters: Chapter[];
+
+  @HasMany(() => Rating)
+  declare ratings: Rating[];
 }
 
 export default Novel;

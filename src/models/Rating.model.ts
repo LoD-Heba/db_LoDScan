@@ -1,9 +1,10 @@
 import { Table, Model, Column, DataType, ForeignKey } from "sequelize-typescript";
 import User from "./User.model";
 import Novel from "./Novel.model";
+import { IRatingAttributes, IRatingCreationAttributes } from "../interfaces/rating.interface";
 
 @Table({ tableName: "rating" })
-class Rating extends Model <Rating>{
+class Rating extends Model <IRatingAttributes, IRatingCreationAttributes>{
   @Column({
     type: DataType.INTEGER,
     allowNull: false,

@@ -9,10 +9,10 @@ import {
 } from "sequelize-typescript";
 import Novel from "./Novel.model";
 import Comment from "./Comment.model";
+import { IChapterAttributes } from "../interfaces/chapter.interface";
 
 @Table({ tableName: "chapter" })
-class Chapter extends Model<Chapter> {
-  
+class Chapter extends Model<IChapterAttributes> {
   @Column({
     type: DataType.STRING(100),
     allowNull: false,

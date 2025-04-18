@@ -10,4 +10,4 @@ export const checkPassword = async (
   userPassword: string
 ): Promise<boolean> => {
   return await bcrypt.compare(enteredPassword, userPassword);
-};
+};  

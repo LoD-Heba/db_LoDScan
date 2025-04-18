@@ -1,9 +1,10 @@
 import { Table, Model, Column, DataType, ForeignKey, BelongsTo } from "sequelize-typescript";
 import User from "./User.model";
 import Chapter from "./Chapter.model";
+import { ICommentAttributes } from "../interfaces/comment.interface";
 
 @Table({ tableName: "comment" })
-class Comment extends Model <Comment>{
+class Comment extends Model<ICommentAttributes>{
   @Column(DataType.TEXT)
   declare content: string;
 

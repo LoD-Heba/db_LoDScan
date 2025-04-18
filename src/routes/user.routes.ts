@@ -1,9 +1,18 @@
-import { Router } from "express";
-import { createRole } from "../controllers/role.controller";
-import { createUser } from "../controllers/user.controller";
+import { Router } from 'express';
+import {
+  getAllUsers,
+  getUserById,
+  createUser,
+  updateUser,
+  deleteUser,
+} from '../controllers/user.controller';
 
-const userRouter = Router();
+const router = Router();
 
-userRouter.post("/", createUser);
+router.get('/', getAllUsers);
+router.get('/:id', getUserById);
+router.post('/', createUser);
+router.put('/:id', updateUser);
+router.delete('/:id', deleteUser);
 
-export default userRouter;
+export default router;

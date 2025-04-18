@@ -1,5 +1,3 @@
-import Role from "../models/Role.model";
-
 export interface IUserAttributes {
   username: string;
   email: string;
@@ -8,5 +6,5 @@ export interface IUserAttributes {
 }
 
 export interface IUserCreationAttributes extends IUserAttributes {
-  // Puedes añadir campos opcionales para creación aquí
+  // Puedes añadir campos opcionales
 }
