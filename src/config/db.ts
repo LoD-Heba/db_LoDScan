@@ -7,7 +7,7 @@ dotenv.config();
 
 const sequelize = new Sequelize(process.env.DATABASE_URL!, {
   dialect: "postgres",
-  models: [__dirname + "/../models/**/*model.ts"],
+  models: [__dirname + "/../models/**/*.model.ts"],
   logging: false,
 });
 
@@ -20,4 +20,5 @@ const connectDB = async () => {
     console.error(colors.zebra("Unable to connect to the database:"), error);
   }
 };
+
 export default connectDB;
